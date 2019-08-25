@@ -20,6 +20,26 @@ def parImpar(num):
     else:
         print(num, ' es impar.')
 
+#EJERCICIO 8
+def diaDeLaSemana(n):
+    if n > 7 or n < 1:
+        print("El número ingresado no está en el rango correcto")
+    else: 
+        if(n == 1):
+            print("Lunes")
+        if(n == 2):
+            print("Martes")
+        if(n == 3):
+            print("Miércoles")
+        if(n == 4):
+            print("Jueves")
+        if(n == 5):
+            print("Viernes")
+        if(n == 6):
+            print("Sábado")
+        if(n == 7):
+            print("Domingo")
+
 #EJERCICIO 10
 def numerosDivisiblesPor2Y3 ():
     for num in range(1,101):
@@ -36,6 +56,27 @@ def numerosConFor():
     for num in range(1,101):
         print(num)
 
+#EJERCICIO 11
+def fichasDomino():
+    fichaArriba = 0
+    fichaAbajo = 0
+    while fichaArriba <= 6:  
+        print(fichaArriba, "|", fichaAbajo, "\n")
+        fichaArriba += 1
+        while fichaAbajo < 6 and not (fichaArriba > 6):
+            fichaAbajo += 1
+            if fichaArriba >= fichaAbajo:    
+                print(fichaArriba, "|", fichaAbajo, "\n")
+        fichaAbajo = 0
+
+def domino():
+    primerNumero=0 
+    while primerNumero<=6:  
+        segundoNumero=0      
+        while segundoNumero<=primerNumero:  
+            print(primerNumero, "|", segundoNumero)
+            segundoNumero=segundoNumero+1
+        primerNumero=primerNumero+1
 #EJERCICIO 12
 def numeroTriangular():
     num = int(input("Dame un índice y te diré el número triangular correspondiente: "))
@@ -137,8 +178,24 @@ def combinatoria(m, n):
     aux = m - n
     print(factorial(m) // (factorial(n) * factorial(aux)))
 
-#EJERCICIO 18
-
+#EJERCICIO 14
+import math
+import cmath
+def raicesPolinomioSegundoGrado():
+    a = float(input("Introduce el valor de a: "))
+    b = float(input("Introduce el valor de b: "))
+    c = float(input("Introduce el valor de c: "))
+    
+    discriminante = (b**2) - (4 * a * c)
+    
+    if discriminante < 0:
+        x1 = -b - cmath.sqrt(discriminante) / (2 * a)
+        x2 = -b + cmath.sqrt(discriminante) / (2 * a)
+        print(x1, x2)
+    else:
+        x1 = -b - math.sqrt(discriminante) / (2 * a)
+        x2 = -b + math.sqrt(discriminante) / (2 * a)
+        print(x1, x2)
 
 
 
