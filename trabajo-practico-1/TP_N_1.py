@@ -3,6 +3,7 @@ def tablaDeMultiplicar():
     num = int(input("Dame un número: "))
     for i in range(1, 13):
         print(num, 'X', i, '=', num * i)
+
 #EJERCICIO 6
 def cualEsMenor(num1, num2):
     if num1 == num2:
@@ -11,17 +12,20 @@ def cualEsMenor(num1, num2):
         print(num2, ' es más chico')
     else:
         print(num1, ' es más chico')
+
 #EJERCICIO 7
 def parImpar(num):
     if(num % 2 == 0):
         print(num, ' es par.')
     else:
         print(num, ' es impar.')
+
 #EJERCICIO 10
 def numerosDivisiblesPor2Y3 ():
     for num in range(1,101):
         if(num % 2 == 0 and num % 3 == 0):
             print(num)
+
 #EJERCICO 9
 def numerosConWhile ():
     i = 1
@@ -31,22 +35,43 @@ def numerosConWhile ():
 def numerosConFor():
     for num in range(1,101):
         print(num)
-#Ejercicio 12
+
+#EJERCICIO 12
 def numeroTriangular():
     num = int(input("Dame un índice y te diré el número triangular correspondiente: "))
     i = 1
     while(i<=num):
         print(i, "-", ((i*(i+1)) // 2))
         i+=1
-#EJERCICIO 13 - EST� MAL
+        
+#EJERCICIO 13
+def sumandoLosPrimerosNumerosPares():
+    num = int(input("Dame un número: "))
+    print(num * (num + 1))
+
 def sumaPrimerosNumerosPares():
     num = int(input("Dame un número: "))
-    contador = 0
-    while(num != 0):
-        num -= 1
-        if(num % 2 ==0):
-            contador += num
-    print(contador)
+    numerosPares = 2 
+    suma = 0 
+    cantidadPares = 1 
+    while cantidadPares <= num:
+        suma += numerosPares
+        numerosPares += 2
+        cantidadPares += 1
+    print(suma, cantidadPares)
+
+def sumaPrimeros ():
+    num = int(input("Dame un número: "))
+    cantidadDePares = 0 
+    numero = 0 
+    suma = 0 
+    while cantidadDePares <= num:
+        if(numero % 2 == 0):
+            suma += numero
+            cantidadDePares += 1
+        numero += 1
+    print(suma)
+
 #EJERCICIO 15
 def paresEntreDosNumeros():
     primerNumero = int(input("Dame el primer numero: "))
@@ -54,6 +79,7 @@ def paresEntreDosNumeros():
     for num in range(primerNumero, segundoNumero):
         if(num%2==0):
             print(num)
+
 #EJERCICIO 16
 def cuantasCifras():
     num = int(input("Ingrese un numero: "))
@@ -62,31 +88,33 @@ def cuantasCifras():
         num = num // 10
         cantidadDeCifras += 1
     print(cantidadDeCifras)
-#EJERCICIO 17 - ESTA MAL
-def primo():
-    num = int(input("Dame un numero y te digo si es primo: "))
-    if num > 1:
-        for i in range(2, num//2):
-            if(num % i == 0):
-                print(num, ' no es un numero primo')
-                break
-            else:
-                print(num, ' es un numero primo')
-    else:
-        print(num, ' no es un numero primo')
-import math
-def esNumeroPrimo():
-    num = int(input("Dame un numero y te digo si es primo: "))
-    raiz = round(math.sqrt(num))
-    if(num % 2 == 0):
+
+#EJERCICIO 17
+def esPar(n):
+    return n % 2 == 0
+def esPrimo(n):
+    if esPar(n) and n != 2:
         print("No es primo")
+    elif n == 2:
+        print("Es primo")
     else:
-        for i in range(2, raiz + 1):
-            if(num % i == 0):
+        for i in range(3, n):
+            if(n % i == 0):
                 print("No es primo")
-                break
+                
             else:
                 print("Es primo")
+def es_Primo_(n):
+    #n = int(input("Ingrese un número: "))
+    if n <= 0:
+        return False
+    if n == 1:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True               
+
 #EJERCICIO 19
 def factorialDeUnNumero():
     num = int(input("Dame un numero: "))
@@ -94,18 +122,22 @@ def factorialDeUnNumero():
     for i in range(inicial, num + 1):
         inicial = inicial * i
     print(inicial)
+
 def factorial(num):
-    inicial = 1
-    for i in range(inicial, num + 1):
-        inicial = inicial * i
-    return inicial
+    if(num > 0):
+        inicial = 1
+        for i in range(inicial, num + 1):
+            inicial = inicial * i
+        return inicial
+    else:
+        print("Debe ser un entero positivo")
+
 #EJERCICIO 20
 def combinatoria(m, n):
     aux = m - n
     print(factorial(m) // (factorial(n) * factorial(aux)))
+
 #EJERCICIO 18
-
-
 
 
 
