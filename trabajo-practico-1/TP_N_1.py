@@ -69,21 +69,33 @@ def fichasDomino():
                 print(fichaArriba, "|", fichaAbajo, "\n")
         fichaAbajo = 0
 
-def domino():
+def dominoConFor():
+    for i in range(0,7):
+        for j in range(i, 7):
+            print(i, "|", j)
+
+def dominoMejor():
     primerNumero=0 
     while primerNumero<=6:  
         segundoNumero=0      
         while segundoNumero<=primerNumero:  
             print(primerNumero, "|", segundoNumero)
-            segundoNumero=segundoNumero+1
-        primerNumero=primerNumero+1
+            segundoNumero+=1
+        primerNumero+=1
+
 #EJERCICIO 12
 def numeroTriangular():
     num = int(input("Dame un índice y te diré el número triangular correspondiente: "))
-    i = 1
-    while(i<=num):
+    for i in range(1, num+1):
         print(i, "-", ((i*(i+1)) // 2))
-        i+=1
+        
+def numeroTriangularConSumatoria():
+    m = int(input("Ingrese un número: "))
+    for n in range(1, m+1):
+        triangular = 0
+        for i in range(1, n+1):
+            triangular += i
+        print(n, "--", triangular)
         
 #EJERCICIO 13
 def sumandoLosPrimerosNumerosPares():
@@ -189,13 +201,77 @@ def raicesPolinomioSegundoGrado():
     discriminante = (b**2) - (4 * a * c)
     
     if discriminante < 0:
-        x1 = -b - cmath.sqrt(discriminante) / (2 * a)
-        x2 = -b + cmath.sqrt(discriminante) / (2 * a)
+        x1 = (-1)*b - cmath.sqrt(discriminante) / (2 * a)
+        x2 = (-1)*b + cmath.sqrt(discriminante) / (2 * a)
         print(x1, x2)
     else:
-        x1 = -b - math.sqrt(discriminante) / (2 * a)
-        x2 = -b + math.sqrt(discriminante) / (2 * a)
+        x1 = (-1)*b - math.sqrt(discriminante) / (2 * a)
+        x2 = (-1)*b + math.sqrt(discriminante) / (2 * a)
         print(x1, x2)
+
+def raicesCuadratica():
+    a = int(input("Introduce el valor de a: "))
+    b = int(input("Introduce el valor de b: "))
+    c = int(input("Introduce el valor de c: "))
+    
+    disc = (b**2) - (4 * a * c)
+    
+    if disc < 0:
+        parteReal = (-1)*b / 2*a
+        parteImg = math.sqrt(abs(disc)) / 2*a
+        print(parteReal, "+i", parteImg)
+      
+#EJERCICIO 18
+def cambioDeBases():
+    for n in range(32, 65):
+        for b in range(2, 17):
+            #print("Resultado en base", b, "de", n)
+            aux = n
+            while aux >= b:
+                r = aux%b
+                aux = aux//b
+                print(cambiarCaracter(r), end="")
+            print(cambiarCaracter(aux), "\t", end="")
+        print("\n")
+
+def cambiarCaracter(num):
+    if num == 10:
+        return "A"
+    if num == 11:
+        return "B"
+    if num == 12:
+        return "C"
+    if num == 13:
+        return "D"
+    if num == 14:
+        return "E"
+    if num == 15:
+        return "F"
+    else:
+        return num
+
+def productoDe_Y_(num, exp):
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
