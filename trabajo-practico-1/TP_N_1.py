@@ -250,7 +250,7 @@ def cambiarCaracter(num):
     else:
         return num
 
-def productoDe_Y_(num, exp):
+#def productoDe_Y_(num, exp):
         
 
 
