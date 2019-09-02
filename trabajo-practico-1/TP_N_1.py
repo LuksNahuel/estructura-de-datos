@@ -20,6 +20,9 @@ def parImpar(num):
     else:
         print(num, ' es impar.')
 
+def parOImpar(num):
+    return('Par' if num % 2 == 0 else "Impar")
+    
 #EJERCICIO 8
 def diaDeLaSemana(n):
     if n > 7 or n < 1:
@@ -27,17 +30,17 @@ def diaDeLaSemana(n):
     else: 
         if(n == 1):
             print("Lunes")
-        if(n == 2):
+        elif(n == 2):
             print("Martes")
-        if(n == 3):
+        elif(n == 3):
             print("Miércoles")
-        if(n == 4):
+        elif(n == 4):
             print("Jueves")
-        if(n == 5):
+        elif(n == 5):
             print("Viernes")
-        if(n == 6):
+        elif(n == 6):
             print("Sábado")
-        if(n == 7):
+        elif(n == 7):
             print("Domingo")
 
 #EJERCICIO 10
