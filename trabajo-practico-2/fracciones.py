@@ -44,7 +44,7 @@ class Fraccion:
 def minimoComunMultiplo(d1, d2):
     A = max(d1, d2)
     B = min(d1, d2)
-    while B:
+    while B > 0:
         mcd = B
         B = A % B
         A = mcd
@@ -53,7 +53,7 @@ def minimoComunMultiplo(d1, d2):
 def maximoComunDivisor(d1, d2):
     A = max(d1, d2)
     B = min(d1, d2)
-    while B:
+    while B > 0:
         mcd = B
         B = A % B
         A = mcd

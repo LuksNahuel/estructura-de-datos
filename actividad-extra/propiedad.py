@@ -73,6 +73,7 @@ class Propiedad:
         else:
             return 'E --> O'
     def getValorPropiedad(self):
+        #usar menos return
         if(self.tipo == 'terreno'):
             return (self.anchoTerreno * self.largoTerreno) * 5000
         elif(self.tipo == 'casa'):

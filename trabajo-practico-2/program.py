@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import complejo
 import fracciones
+
 c1 = complejo.Complejo(3.5, 5.6)
 real = c1.obtenerParteReal()
 imag = c1.obtenerParteImaginaria()
