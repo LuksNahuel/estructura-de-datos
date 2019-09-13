@@ -11,6 +11,9 @@ def sumaTotal(vector, pos = 0):
     return suma
 
 # Ejercicio 2 #
+'''Escribir una función recursiva que multiplique todos los elementos de un vector de
+enteros.'''
+
 vectorsin = np.array([1,2,3,4,5])
 
 def productoTotal(vector, pos = 0):
