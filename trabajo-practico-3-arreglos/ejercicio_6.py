@@ -21,7 +21,7 @@ eliminarPosicion(vector, 2)
 print(vector)
 
 '''Desarrollar una función que elimine la primera aparición de un elemento determinado
-de un arreglo de enteros. '''
+de un arreglo de enteros. IMPLEMENTARLO CON WHILE '''
 
 def primerAparicion(arr, e):
     for i in range(0, len(arr)):
@@ -49,3 +49,9 @@ def eliminarTodos(arr, e):
     for i in range(0, len(arr)):
         if arr[i] == e:
             eliminarPosicion(arr, i)
+
+vectorsin = np.array([1, 2, 3, 4, 1, 1, 8])
+print(vectorsin)
+
+eliminarTodos(vectorsin, 1)
+print(vectorsin)
