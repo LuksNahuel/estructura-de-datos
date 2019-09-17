@@ -2,7 +2,7 @@
 
 import numpy as np
 
-vector = np.array([1, 4, 5, 8, 9])
+vector = np.array([1, 2, 4, 6, 8, 10])
 
 def binSearch(vector, inicio, final, dato):
     res = False
@@ -16,7 +16,7 @@ def binSearch(vector, inicio, final, dato):
             res = binSearch(vector, centro + 1, final, dato)
     return res
 
-print(binSearch(vector, 0, len(vector) - 1, 2))
+print(binSearch(vector, 0, len(vector) - 1, 4))
 
 def insertSort(arr):
     for pos in range(1, len(arr)):
