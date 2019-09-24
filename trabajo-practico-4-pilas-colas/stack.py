@@ -26,7 +26,10 @@ class Stack:
                 print(self.stack[e])
     
     def imprimir(self):
-        print(self.stack[:self.top+1])
+        if not self.isEmpty():
+            print(self.stack[:self.top+1])
+        else:
+            raise Exception("La pila está vacía y no se puede imprimir.")
     
     def push(self, data):
         if not self.isFull():
