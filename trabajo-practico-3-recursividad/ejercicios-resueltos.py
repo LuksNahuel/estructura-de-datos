@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# EJERCICIO 1 #
+'''Implementar una funcion que calcule el factorial de un numero de forma recursiva.'''
+
+def factorial(n):
+    salida = 0
+    if n < 2:
+        salida = 1
+    else:
+        salida = n * factorial(n-1)
+    return salida
+
 # EJERCICIO 2 #
 '''Una canilla de una casa pierde agua de forma que todos los dias pierde dos
 gotas mas que el dia anterior. Escribir una función recursiva que calcule
@@ -75,45 +86,74 @@ def numeroTriangular(n):
         t = n + numeroTriangular(n - 1)
     return t
 
-def combinatorio(n, m):
+# EJERCICIO 6 # 
+'''Escribir una función recursiva que calcule las combinaciones de N elementos tomados
+de a M'''
+
+def combinatoria(n, m):
     c = 0
     if m == 1:
         c = n
     elif n == m:
         c = 1
     elif n>m and m>1:
-        c = combinatorio(n-1, m-1) + combinatorio(n-1, m)
+        c = combinatoria(n-1, m-1) + combinatoria(n-1, m)
     return c
 
 # EJERCICIO 7 #
 '''Escribir una función recursiva que pase un numero decimal a base 2.'''
 
-def binario(n):
+def pasarABinario(n):
     if n < 2:
-        print(n)
+        print(n, end="")
     else:
-        binario(n//2)
-        print(n%2)
+        pasarABinario(n//2)
+        print(n%2, end="")
+    
 
 # EJERCICIO 8 #
 '''Escribir una función recursiva que reciba un numero positivo N y calcule la cantidad
 de digitos que tiene.'''
 
-def digitos(n):
+def cantidadDigitos(n):
     d = 0
     if n < 10:
         d = 1
     else:
-        d = 1 + digitos(n//10)
+        d = 1 + cantidadDigitos(n//10)
     return d
 
 # EJERCICIO 9 #
+'''Escribir un programa que reciba dos enteros positivos n y b y devuelva True si n es
+potencia de b y False en caso contrario'''
 
-'''def esPotencia(n, b):
-    if n == 0:
-        return True
-    else:'''
-            
+def esPotencia(n, b):
+    salida = None
+    if n == 1:
+        salida = True
+    elif n < 1 or b == 1:
+        salida = False
+    else:
+        salida = esPotencia(n/b, b)
+    return salida
+
+# EJERCICIO 10 #
+'''El triangulo de pascal es un arreglo triangular de numeros que se define de la
+siguiente manera: Las filas se enumeran desde n = 0, de arriba hacia abajo. Los
+valores de cada columna, se enumeran desde k = 0, de izquierda a derecha. Los
+valores de los bordes del triangulo son siempre igual a 1. Cualquier otro valor se
+calcula sumando los dos valores contiguos de la fila de arriba. Escribir la funcion
+recursiva pascal(n , k), que calcula el valor que se encuentra en la fila n columna k.
+Por ejemplo: pascal(5 , 2) = 10'''
+
+def pascal(n,k):
+    numero = None
+    if k == 0 or n == k:
+        numero = 1
+    else:
+        numero = pascal(n-1, k-1) + pascal(n-1, k)
+    return numero
+    
 
 
 
