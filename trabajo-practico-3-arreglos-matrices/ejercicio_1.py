@@ -15,5 +15,5 @@ vector = np.zeros(shape = (cantidad), dtype = int)
 fn.llenarArray(vector)
 fn.imprimirVectorAlReves(vector)
 
-print("La suma del vector es ", fn.sumaElementosArray(vector))
-print("El promedio del vector es ", fn.promedioArray(vector))
+print("La suma del vector es", fn.sumaElementosArray(vector))
+print("El promedio del vector es", fn.promedioArray(vector))

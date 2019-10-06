@@ -13,10 +13,22 @@ def insertarElementoEnArreglo(arr, pos, e):
         aux2 = arr[index]
         arr[index] = aux
         aux = aux2
-        
-vector = np.array([1, 2, 3, 4, 5, 6, 7])
-print(vector)
 
-insertarElementoEnArreglo(vector, 0, 8)
-print(vector)
+def arrInsert(arr, pos, e):
+    if arr[pos] == 0:
+        arr[pos] = e
+    else:
+        aux = arr[pos]
+        arr[pos] = e
+        for index in range(pos + 1, len(arr)):
+            aux2 = arr[index]
+            arr[index] = aux
+            aux = aux2
+
+if __name__ == "__main__":
+    vector = np.array([1, 2, 3, 4, 5, 6, 7])
+    print(vector)
+    
+    insertarElementoEnArreglo(vector, 0, 8)
+    print(vector)
 

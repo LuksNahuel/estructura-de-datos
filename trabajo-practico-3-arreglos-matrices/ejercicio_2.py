@@ -2,6 +2,14 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
+def arrSum(arr, pos):
+    suma = 0
+    if pos == 0:
+        suma = arr[pos]
+    else: 
+        suma = arr[pos] + arrSum(arr, pos - 1)
+    return suma
+
 def sumaTotal(vector, pos = 0):
     suma = 0
     if pos == len(vector) - 1:
