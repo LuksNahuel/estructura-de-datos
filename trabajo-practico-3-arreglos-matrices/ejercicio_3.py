@@ -24,6 +24,9 @@ def desplazarHaciaDerecha_(arr):
     for index in range(len(arr) - 1, 0, -1):
         arr[index] = arr[index - 1]
     arr[0] = aux
+
+
+
     
 cantidad = int(input("¿Cuántos números quiere ingresar? "))
 vector = np.zeros(shape = (cantidad), dtype = int)

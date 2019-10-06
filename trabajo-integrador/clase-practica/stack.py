@@ -1,23 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 class Stack:
-    def __init__(self, capacity, dtype = int):
-        self.stack = np.zeros(shape=(capacity), dtype = dtype)
+    def __init__(self, size, dtype = int):
+        self.stack = np.zeros(shape=(size), dtype = dtype)
         self.top = None
     
-    def getType(self):
-        return self.stack.dtype
-    
     def getTop(self):
-        salida = None
         if not self.isEmpty():
-            salida = self.stack[self.top]
+            return self.stack[self.top]
         else:
             raise Exception("La pila está vacía.")
-        return salida
+    
+    def dtype(self):
+        return self.stack.dtype
     
     def getSize(self):
         salida = 0
@@ -40,9 +35,8 @@ class Stack:
         if not self.isFull():
             if self.isEmpty(): 
                 self.top = -1
+            self.stack[self.top + 1] = data
             self.top += 1
-            self.stack[self.top] = data
-            
         else:
             raise Exception("No se puede apilar. La pila está llena.")
     
@@ -73,3 +67,4 @@ class Stack:
                 nueva.stack[i] = self.stack[i]
             nueva.top = self.top
         return nueva
+
