@@ -27,6 +27,9 @@ class Cola:
         else:
             raise Exception("No se pudo encolar el elemento "+str(data)+", la cola esta llena.")
 
+    def getType(self):
+        return self.cola.dtype
+    
     def dequeue(self):
         data = None
         if not self.isEmpty():
