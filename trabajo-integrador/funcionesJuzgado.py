@@ -22,9 +22,9 @@ def cantidadHasta_(unMes):
         
 #############################################################
     
-juz1 = juzgado.Juzgado(0)
-juz2 = juzgado.Juzgado()
-juz3 = juzgado.Juzgado()
+carlosPerez = juzgado.Juzgado(0)
+juanLopez = juzgado.Juzgado()
+robertoGomez = juzgado.Juzgado()
 
 exp = expediente.Expediente(5, "penal", "urgente")
 
@@ -38,4 +38,4 @@ def mesaDeEntradas(juzgadoDeTurno, juzgadoAux0, juzgadoAux1, exp):
         else:
             juzgadoAux1.recibirExpediente(exp)
 
-mesaDeEntradas(juz1, juz2, juz3, exp)
+mesaDeEntradas(carlosPerez, juanLopez, robertoGomez, exp)

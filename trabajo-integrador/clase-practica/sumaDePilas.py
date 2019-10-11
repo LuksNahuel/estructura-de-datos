@@ -12,7 +12,7 @@ numN = stack.Stack(4)
 numM = stack.Stack(4)
 
 def sumaDePilas(n, m):
-    res = stack.Stack(n.getSize(), n.dtype())
+    res = stack.Stack(n.getSize() + 1, n.dtype())
     auxN = n.clone()
     auxM = m.clone()
     carry = 0
@@ -22,20 +22,25 @@ def sumaDePilas(n, m):
        carry = numero // 10
     
     res.push(carry)
+    res.invertir()
     
-    return res.invertir()
+    return res
     
 
-numN.push(1)
+numN.push(9)
 numN.push(2)
 numN.push(3)
 numN.push(4)
 
-numM.push(1)
+numM.push(9)
 numM.push(2)
 numM.push(3)
 numM.push(4)
 
 suma = sumaDePilas(numN, numM)
 
-print(suma)
+numN.imprimir()
+
+numM.imprimir()
+
+suma.imprimir()

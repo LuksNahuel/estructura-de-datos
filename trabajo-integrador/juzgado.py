@@ -4,9 +4,13 @@ import expediente
 import cola
 
 class Juzgado():
-    def __init__(self, capacidad = 50):
+    def __init__(self, nombre, capacidad = 50):
         self.normales = cola.Cola(capacidad, dtype = expediente.Expediente)
         self.urgentes = cola.Cola(capacidad, dtype = expediente.Expediente)
+        self.nombre = nombre
+        
+    def __repr__(self):
+        return str((self.nombre))
     
     def recibirExpediente(self, exp):
         if exp.getPrioridad() == "normal":

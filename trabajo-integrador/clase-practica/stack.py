@@ -14,6 +14,12 @@ class Stack:
     def dtype(self):
         return self.stack.dtype
     
+    def invertir(self):
+        aux = self.clone()
+        self.empty()
+        while not aux.isEmpty():
+            self.push(aux.pop())
+    
     def getSize(self):
         salida = 0
         if not self.isEmpty():
