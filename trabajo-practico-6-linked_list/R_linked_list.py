@@ -6,6 +6,38 @@ class NodeList:
         self.data = data
         self.next = None
     
+    def mostrar(self):
+        print(self.data)
+        if self.next != None:
+            self.next.mostrar()
+    
+    def size(self):
+        cantidad = 0
+        if self.next == None:
+            cantidad = 1
+        else:
+            cantidad = 1 + self.next.size()
+        return cantidad
+    
+    def insert(self, nuevo = None, posInsert = 0, posAct = 0):
+        if posAct == posInsert - 1 or self.next == None:
+            nuevo.next = self.next
+            self.next = nuevo
+        else:
+            self.next.insert(nuevo, posInsert, posAct + 1)
+    
+    def delete(self, posDelete, posAct = 0):
+        if posAct == posDelete - 1:
+            self.next = self.next.next
+        else:
+            self.next.delete(posDelete, posAct + 1)
+        
+    def append(self, node = None):
+        if self.next == None:
+            self.next = node
+        else:
+            self.next.append(node)
+    
     def __repr__(self):
         return str(self.data)
     
@@ -29,12 +61,23 @@ class List:
         return self.head == None
     
     def size(self):
-        size = 0
-        aux = self.head
-        while aux != None:
-            size += 1
-            aux = aux.next
-        return size
+        cantidad = 0
+        if not self.isEmpty():
+            cantidad = self.head.size()
+        return cantidad
+    
+    
+    def printList(self):
+        if not self.isEmpty():
+            print(self.head)                
+            if self.head.next != None:
+                aux = List()
+                aux.head = self.head.next
+                aux.printList()
+
+    def mostrar(self):
+        if not self.isEmpty():
+            self.head.mostrar()
             
     def getElement(self, pos):
         node = None
@@ -50,9 +93,13 @@ class List:
         return node
     
     def append(self, data = None):
-        self.insert(self.size(), data)
+        new_node = NodeList(data)
+        if self.isEmpty():
+            self.head = new_node
+        else: 
+            self.head.append(new_node)
     
-    def insert(self, pos, data):
+    def insert(self, pos = 0, data = None):
         nuevo = NodeList(data)
         if self.isEmpty():
             self.head = nuevo
@@ -61,35 +108,14 @@ class List:
                 nuevo.next = self.head
                 self.head = nuevo
             else:
-                aux = self.head
-                cont = 0
-                while cont < pos - 1 and aux.next != None:
-                    aux = aux.next
-                    cont += 1
-                nuevo.next = aux.next
-                aux.next = nuevo
+                self.head.insert(nuevo, pos)
       
     def delete(self, pos):
-        if not self.isEmpty() and pos < self.size():
+        if not self.isEmpty() and pos < self.size() and pos >= 0:
             if pos == 0:
                 self.head = self.head.next
-#            elif pos == self.size() - 1:
-#                aux = self.head
-#                while(aux.next != None):
-#                    aux = aux.next
-#                aux.next = None
             else:
-                count = 0
-                nodeAfter = self.head
-                nodeToKill = self.head
-                while(count < pos):
-                    count += 1
-                    nodeToKill = nodeToKill.next
-                count = 0
-                while(count < pos - 1): #capturar el nodo en el recorrido del otro
-                    count += 1
-                    nodeAfter = nodeAfter.next
-                nodeAfter.next = nodeToKill.next
+                self.head.delete(pos)
         else:
             raise Exception("La posición no existe o la lista está vacía")
         
