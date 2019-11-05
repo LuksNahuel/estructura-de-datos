@@ -11,3 +11,9 @@ arbol.insert(22)
 arbol.insert(1)
 
 
+buscado = arbol.search(54)
+
+maximo = arbol.maximum()
+
+minimo = arbol.minimum()
+

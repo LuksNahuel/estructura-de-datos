@@ -39,27 +39,121 @@ class NodoArbol:
             self.right.postOrder()
         print(self.data)
     
-    def insert(self, nodo):
-        if nodo.data < self.data:
+    def insert(self, node):
+        if node.data < self.data:
             if self.hasLeft():
-                self.left.insert(nodo)
+                self.left.insert(node)
             else:
-                self.left = nodo
-        elif nodo.data > self.data:
+                self.left = node
+        elif node.data > self.data:
             if self.hasRight():
-                self.right.insert(nodo)
+                self.right.insert(node)
             else:
-                self.right = nodo
+                self.right = node
         else:
             print("Dato existente.")
     
-    def grade(self):
-        if self.isLeaf():
-            return 0
-        elif self.hasRight() and self.hasLeft():
-            return 2
+    def search(self, data):
+        output = None
+        if self.data == data:
+            output = self
+        elif data < self.data:
+            if self.hasLeft():
+                output = self.left.search(data)
         else:
-            return 1
+            if self.hasRight():
+                output = self.right.search(data)
+        return output
+        
+    def grade(self):
+        output = 0
+        if self.hasRight() and self.hasLeft():
+            output = 2
+        elif self.hasRight() or self.hasLeft():
+            output = 1
+        return output
+        
+    def maximum(self):
+        output = None
+        if not self.hasRight():
+            output = self
+        else:
+            output = self.right.maximum()
+        return output
+        
+    def minimum(self):
+        output = None
+        if not self.hasLeft():
+            output = self
+        else:
+            output = self.left.minimum()
+        return output
+
+    def predecessor(self):
+        output = None
+        if self.hasLeft():
+            output = self.left.maximum()
+        return output
+    
+    def sucessor(self):
+        output = None
+        if self.hasRight():
+            output = self.right.minimum()
+        return output
+    
+    def height(self):
+        height = 0
+        if self.grade() == 2:
+            height = 1 + max(self.left.height(), self.right.height())
+        elif self.hasLeft():
+            height = 1 + self.left.height()
+        elif self.hasRight():
+            height = 1 + self.right.height()
+        return height
+    
+    def delete(self, data):
+        if data < self.data:
+            if self.hasLeft():
+                if self.left.data == data:
+                    if self.left.grade() == 2:
+                        pred = self.left.predecessor()
+                        self.left.delete(pred.data)
+                        pred.left = self.left.left
+                        pred.right = self.left.right
+                        self.left = pred
+                    elif self.left.hasLeft():
+                        self.left = self.left.left
+                    elif self.left.hasRight():
+                        self.left = self.left.right
+                    else:
+                        self.left = None
+                else:
+                    self.left.delete(data)
+        else:
+            if self.hasRight():
+                if self.right.data == data:
+                    if self.right.grade() == 2:
+                        pred = self.right.predecessor()
+                        self.right.delete(pred.data)
+                        pred.left = self.right.left
+                        pred.right = self.right.right
+                        self.right = pred
+                    elif self.right.hasLeft():
+                        self.right = self.right.left
+                    elif self.right.hasRight():
+                        self.right = self.right.right
+                    else:
+                        self.right = None
+                else:
+                    self.right.delete(data)
+                    
+    def weight(self):
+        output = 1
+        if self.hasLeft():
+            output = output + self.left.weight()
+        if self.hasRight():
+            output = output + self.right.weight()
+        return output
     
     def isLeaf(self):
         return self.left == None and self.right == None
@@ -106,8 +200,40 @@ class ABB:
     def empty(self):
         self.root = None
     
-    def search(self, data):
-        if self.root == data:
-            return True
+    def maximum(self):
+        if not self.isEmpty():
+            return self.root.maximum()
         else:
-            self.root.search(data)
+            raise Exception("El árbol está vacío.")
+    
+    def minimum(self):
+        if not self.isEmpty():
+            return self.root.minimum()
+        else:
+            raise Exception("El árbol está vacío.")
+    
+    def search(self, data):
+        output = False
+        if not self.isEmpty() and self.root.search(data) != None:
+            output = True
+        return output
+    
+    def weight(self):
+        output = 0
+        if not self.isEmpty():
+            output = self.root.weight()
+        return output
+    
+    def delete(self, data):
+        if not self.isEmpty() and self.search(data):
+            if self.root.data == data:
+                pred = self.root.predecessor()
+                self.root.delete(pred.data)
+                pred.left = self.root.left
+                pred.right = self.root.right
+                self.root = pred
+            else:
+                self.root.delete(data)
+        else:
+            raise Exception("El dato no existe o el árbol está vacío.")
+    
