@@ -17,6 +17,15 @@ class NodoArbol:
             dot.node(str(self.right.data), str(self.right.data))
             dot.edge(str(self.data), str(self.right.data))
             self.right.treePlot(dot)
+            
+    def isLeaf(self):
+        return self.left == None and self.right == None
+    
+    def hasLeft(self):
+        return self.left != None
+
+    def hasRight(self):
+        return self.right != None
     
     def preOrder(self):
         print(self.data)
@@ -155,15 +164,20 @@ class NodoArbol:
             output = output + self.right.weight()
         return output
     
-    def isLeaf(self):
-        return self.left == None and self.right == None
-    
-    def hasLeft(self):
-        return self.left != None
+    def searchPath(self, path, index = 0):
+        output = False
+        if path[index] == self.data:
+            if index + 1 < len(path):
+                if path[index + 1] < self.data:
+                    if self.hasLeft():
+                        output = self.left.searchPath(path, index + 1)
+                else:
+                    if self.hasRight():
+                        output = self.right.searchPath(path, index + 1)
+            else:
+                output = True
+        return output
 
-    def hasRight(self):
-        return self.right != None
-    
 class ABB:
     def __init__(self):
         self.root = None
@@ -236,4 +250,9 @@ class ABB:
                 self.root.delete(data)
         else:
             raise Exception("El dato no existe o el árbol está vacío.")
-    
+            
+    def searchPath(self, path):
+        output = False
+        if not self.isEmpty():
+            output = self.root.searchPath(path)
+        return output

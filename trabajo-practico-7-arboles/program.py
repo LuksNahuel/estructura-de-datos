@@ -17,3 +17,7 @@ maximo = arbol.maximum()
 
 minimo = arbol.minimum()
 
+lista = [25, 10, 5]
+
+print(arbol.searchPath(lista))
+
